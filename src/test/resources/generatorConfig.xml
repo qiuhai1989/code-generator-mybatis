@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <properties resource="config.properties"/>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <!-- 实现序列化接口 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin">
+            <property name="suppressJavaInterface" value="false"/>
+        </plugin>
+
+        <!-- 增加equals和hashCode方法 -->
+        <!-- <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/> -->
+       
+
+        <!-- 增加toString方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+       
+
+        <!-- 重新命名查询类 -->
+        <!--
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="Criteria"/>
+        </plugin>
+        -->
+
+        <!-- 自定义插件 - 添加Spring注解 -->
+<!--    <plugin type="my.tools.codegenerator.AddSpringComponentAnnotationPlugin"/>-->
+
+        <!-- 自定义插件 - 覆盖式生成SQL Mapper文件 -->
+        <plugin type="my.tools.codegenerator.OverrideSqlMapperFilePlugin"/>
+
+        <!-- 自定义插件 - 忽略BaseModel里的字段和方法 -->
+        <!-- <plugin type="my.tools.codegenerator.IgnoreModelFieldPlugin">
+            <property name="ignore" value="id,created"/>
+        </plugin> -->
+
+        <commentGenerator type="my.tools.codegenerator.MyCommentGenerator">
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection
+                driverClass="${jdbc.driverClass}"
+                connectionURL="${jdbc.url}"
+                userId="${jdbc.username}"
+                password="${jdbc.password}"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成模型，模型默认继承BaseModel类 -->
+        <javaModelGenerator
+                targetPackage="${config.package}.entity"
+                targetProject="${config.output}\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <!-- <property name="rootClass" value="${config.package}.model.BaseModel"/> -->
+        </javaModelGenerator>
+
+        <!-- 生成SQL Mapper文件 -->
+        <sqlMapGenerator
+                targetPackage="${config.package}.mapper"
+                targetProject="${config.output}\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        
+        <!-- 生成Java接口文件 -->
+        <javaClientGenerator
+                type="XMLMAPPER"
+                targetPackage="${config.package}.dao"
+                targetProject="${config.output}\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        
+        <!-- 演示生成(案例一) -->
+        <!-- <table tableName="bus_webchat_template" domainObjectName="WebChatTemplate">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        -->
+        
+        <!-- 演示生成(案例二) -->
+        
+        <!-- <table tableName="user_organ_label" 
+        	   domainObjectName="OrganLabel" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        
+        <table tableName="user_organ_label_relation" 
+        	   domainObjectName="OrganLabelRelation" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+         <table tableName="bus_employee_label_relation" 
+        	   domainObjectName="EmployeeLabelRelation" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table> -->
+        
+        
+        <table tableName="ss_comment_scene" 
+        	   domainObjectName="CommentScene" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        <table tableName="ss_comment_content" 
+        	   domainObjectName="CommentContent" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        <table tableName="ss_comment_object_catalog" 
+        	   domainObjectName="CommentObjectCatalog" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        <table tableName="ss_comment_audit" 
+        	   domainObjectName="CommentAudit" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        <table tableName="ss_comment_attitude" 
+        	   domainObjectName="CommentAttitude" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+         <table tableName="ss_comment_black_list" 
+        	   domainObjectName="CommentBlackList" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        
+        
+        
+        
+        <!-- 
+        <table tableName="example_item_record" 
+        	   domainObjectName="ExampleItemRecord" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        -->
+        
+        <!-- 
+        report_active_count_day;
+		report_active_rate_month;
+		report_active_rate_season;
+		report_bind_rate_season;
+		report_indicators_score_rule;
+		report_join_activity_season;
+		report_mass_message_month;
+		report_mass_message_season;
+		report_summary_statis_season;
+		report_third_news;
+		report_third_news_month;
+		report_third_news_season;
+		report_third_news_views; 
+		-->
+		
+		<!-- <table tableName="report_active_count_day" 
+        	   domainObjectName="ReportActiveCountDay" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        <table tableName="report_active_rate_month" 
+        	   domainObjectName="ReportActiveRateMonth" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        <table tableName="report_active_rate_season" 
+        	   domainObjectName="ReportActiveRateSeason" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        <table tableName="report_bind_rate_season" 
+        	   domainObjectName="ReportBindRateSeason" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        
+        <table tableName="report_indicators_score_rule" 
+        	   domainObjectName="ReportIndicatorsScoreRule" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        <table tableName="report_join_activity_season" 
+        	   domainObjectName="ReportJoinActivitySeason" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        <table tableName="report_mass_message_month" 
+        	   domainObjectName="ReportMassMessageMonth" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        <table tableName="report_mass_message_season" 
+        	   domainObjectName="ReportMassMessageSeason" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+		<table tableName="report_summary_statis_season" 
+        	   domainObjectName="ReportSummaryStatisSeason" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        <table tableName="report_third_news" 
+        	   domainObjectName="ReportThirdNews" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        <table tableName="report_third_news_month" 
+        	   domainObjectName="ReportThirdNewsMonth" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        
+        <table tableName="report_third_news_season" 
+        	   domainObjectName="ReportThirdNewsSeason" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        
+        <table tableName="report_third_news_views" 
+        	   domainObjectName="ReportThirdNewsViews" 
+        	   enableCountByExample="false" 
+        	   enableUpdateByExample="false" 
+        	   enableDeleteByExample="false"
+        	   enableSelectByExample="false"
+        	   selectByExampleQueryId="false"
+        	   escapeWildcards="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table> -->
+        
+        
+
+    </context>
+
+</generatorConfiguration>
